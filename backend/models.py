@@ -1,0 +1,28 @@
+from sqlalchemy import Column, Integer, String, Float, Boolean, DateTime, JSON
+from datetime import datetime, timezone
+from database import Base
+
+class Alert(Base):
+    __tablename__ = "alerts"
+
+    id = Column(Integer, primary_key=True, index=True)
+    timestamp = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+    source_ip = Column(String, nullable=True)
+    destination_ip = Column(String, nullable=True)
+    attack_type = Column(String, nullable=False)
+    confidence_score = Column(Float, nullable=False)
+    anomaly_score = Column(Float, nullable=False)
+    top_shap_features = Column(JSON, nullable=True)
+    llm_explanation = Column(String, nullable=True)
+    tier_reached = Column(Integer, nullable=False)
+
+class Flow(Base):
+    __tablename__ = "flows"
+
+    id = Column(Integer, primary_key=True, index=True)
+    timestamp = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+    source_ip = Column(String, nullable=True)
+    destination_ip = Column(String, nullable=True)
+    flagged = Column(Boolean, default=False)
+    tier1_score = Column(Float, nullable=True)
+    summary = Column(JSON, nullable=True)

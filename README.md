@@ -148,7 +148,9 @@ pip install -r backend/requirements.txt
 cp .env.example backend/.env
 ```
 
-Edit `backend/.env`:                                                                                                   DATABASE_URL=postgresql://xids_user:yourpassword@localhost:5432/xids_db
+Edit `backend/.env`:                                                                                                  
+
+DATABASE_URL=postgresql://xids_user:yourpassword@localhost:5432/xids_db
  
 ANTHROPIC_API_KEY=your_key
 

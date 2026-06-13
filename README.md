@@ -18,29 +18,29 @@ Ingests network flow records via a REST API and runs them through a three-tier M
 
 Tier 1: Isolation Forest
 
-Trained on benign traffic only. Flags anything that deviates from normal.
+ Trained on benign traffic only. Flags anything that deviates from normal.
 
-Not anomalous -> logged and dropped.
+ Not anomalous -> logged and dropped.
 
 
 
 Tier 2: XGBoost
 
-Classifies flagged flows into attack type across 7 classes.
+ Classifies flagged flows into attack type across 7 classes.
 
-96.9% macro F1 on CICIDS2017 test set.
+ 96.9% macro F1 on CICIDS2017 test set.
 
-Below 0.70 confidence -> low-confidence alert stored, pipeline stops.
+ Below 0.70 confidence -> low-confidence alert stored, pipeline stops.
 
 
 
 Tier 3: TreeSHAP + Claude API + AbuseIPDB
 
-Top 5 SHAP features extracted. Claude generates a plain English explanation
+ Top 5 SHAP features extracted. Claude generates a plain English explanation
 
-from the actual feature values. AbuseIPDB checks source IP reputation.
+ from the actual feature values. AbuseIPDB checks source IP reputation.
 
-Full alert stored with all enrichment.
+ Full alert stored with all enrichment.
 
 ## Tech stack
 

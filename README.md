@@ -77,7 +77,7 @@ CICIDS2017 — 2,520,751 network flow records, 52 features, 7 attack classes.
 
 |   ├── main.py                  # FastAPI app entry point
 
-│   ├── auth.py                  # JWT, bcrypt, role checker
+│ ├── auth.py                  # JWT, bcrypt, role checker
 
 │   ├── database.py              # SQLAlchemy engine and session
 
@@ -148,7 +148,9 @@ DATABASE_URL=postgresql://xids_user:yourpassword@localhost:5432/xids_db
  
 ANTHROPIC_API_KEY=your_key
 
-ABUSEIPDB_API_KEY=your_key### 3. Set up PostgreSQL
+ABUSEIPDB_API_KEY=your_key
+
+### 3. Set up PostgreSQL
 
 ```bash
 createdb xids_db

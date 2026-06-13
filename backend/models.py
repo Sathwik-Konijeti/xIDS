@@ -2,6 +2,15 @@ from sqlalchemy import Column, Integer, String, Float, Boolean, DateTime, JSON
 from datetime import datetime, timezone
 from database import Base
 
+class User(Base):
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True, index=True)
+    username = Column(String, unique=True, nullable=False, index=True)
+    hashed_password = Column(String, nullable=False)
+    role = Column(String, nullable=False, default="viewer")
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+
 class Alert(Base):
     __tablename__ = "alerts"
 
@@ -15,6 +24,8 @@ class Alert(Base):
     top_shap_features = Column(JSON, nullable=True)
     llm_explanation = Column(String, nullable=True)
     tier_reached = Column(Integer, nullable=False)
+    analyst_feedback = Column(JSON, nullable=True)
+    incident_id = Column(String, nullable=True)
 
 class Flow(Base):
     __tablename__ = "flows"

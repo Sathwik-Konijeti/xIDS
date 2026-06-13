@@ -26,6 +26,7 @@ class Alert(Base):
     tier_reached = Column(Integer, nullable=False)
     analyst_feedback = Column(JSON, nullable=True)
     incident_id = Column(String, nullable=True)
+    abuse_ipdb_score = Column(Integer, nullable=True)
 
 class Flow(Base):
     __tablename__ = "flows"
@@ -37,3 +38,12 @@ class Flow(Base):
     flagged = Column(Boolean, default=False)
     tier1_score = Column(Float, nullable=True)
     summary = Column(JSON, nullable=True)
+
+class IPReputation(Base):
+    __tablename__ = "ip_reputation"
+
+    id = Column(Integer, primary_key=True, index=True)
+    ip_address = Column(String, unique=True, nullable=False, index=True)
+    abuse_score = Column(Integer, nullable=True)
+    checked_at = Column(DateTime, nullable=True)
+    expires_at = Column(DateTime, nullable=True)

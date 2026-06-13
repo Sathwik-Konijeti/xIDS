@@ -16,15 +16,11 @@ Ingests network flow records via a REST API and runs them through a three-tier M
 
 ## Detection pipeline Every flow
 
-|
-
 Tier 1: Isolation Forest
 
 Trained on benign traffic only. Flags anything that deviates from normal.
 
 Not anomalous -> logged and dropped.
-
-|
 
 Tier 2: XGBoost
 
@@ -34,15 +30,13 @@ Classifies flagged flows into attack type across 7 classes.
 
 Below 0.70 confidence -> low-confidence alert stored, pipeline stops.
 
-|
-
 Tier 3: TreeSHAP + Claude API + AbuseIPDB
 
 Top 5 SHAP features extracted. Claude generates a plain English explanation
 
 from the actual feature values. AbuseIPDB checks source IP reputation.
 
-Full alert stored with all enrichment.---
+Full alert stored with all enrichment.
 
 ## Tech stack
 
@@ -81,7 +75,7 @@ CICIDS2017 — 2,520,751 network flow records, 52 features, 7 attack classes.
 
 ├── backend/
 
-│   ├── main.py                  # FastAPI app entry point
+|   ├── main.py                  # FastAPI app entry point
 
 │   ├── auth.py                  # JWT, bcrypt, role checker
 

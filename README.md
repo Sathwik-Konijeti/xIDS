@@ -22,6 +22,8 @@ Trained on benign traffic only. Flags anything that deviates from normal.
 
 Not anomalous -> logged and dropped.
 
+
+
 Tier 2: XGBoost
 
 Classifies flagged flows into attack type across 7 classes.
@@ -29,6 +31,8 @@ Classifies flagged flows into attack type across 7 classes.
 96.9% macro F1 on CICIDS2017 test set.
 
 Below 0.70 confidence -> low-confidence alert stored, pipeline stops.
+
+
 
 Tier 3: TreeSHAP + Claude API + AbuseIPDB
 
